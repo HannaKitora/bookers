@@ -5,8 +5,11 @@ class BooksController < ApplicationController
   
   def create
     book = Book.new(book_params)
-    book.save
-    redirect_to '/show'
+    if @book.save
+      redirect_to book_path(@book),notice: "Book was successfully created."
+    else
+      render :new
+    end
   end
 
   
@@ -30,6 +33,10 @@ class BooksController < ApplicationController
   end
   
   def delete
+  end
+  
+  def start
+    redirect_to index_book_path
   end
   
   private
