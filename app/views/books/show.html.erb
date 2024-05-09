@@ -1,4 +1,11 @@
-<p>Book was successfully created</p>
+
+<if @book.save>
+  <p>Book was successfully created</p>
+</if>
+<else>
+  render :show_book_path
+  
+</else>
 
   <h4>Title:</h4>
   <p><%= @book.title %></p>
@@ -7,7 +14,7 @@
   <p><%= @book.body %></p>
 
   <span>
-    <%= link_to Edit, edit_book_path(@book.id) %>
+    <%= link_to Edit, edit_book_path(books.id) %>
   </span>
   
   <span>
