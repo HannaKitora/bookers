@@ -1,27 +1,41 @@
 <h1>Books</h1>
 
-<div class="book-wrap">
+<table>
 <% @books.each do |book| %>
   <div class="book-box">
-    <p>Title</p>
-    <span class="book-title">
-      <%= @books.title %>
-    </span>
-    <p>Body</p>
-    <span class="book-body">
-      <%= @books.body %>
-    </span>
-    <span>
-      <%= link_to 'Show', books_path(book.id) %>
-    </span>
-    <span>
-      <%= link_to 'Edit', books_path(book.id) %>
-    </span>
-    <span>
-      <%= link_to 'Destroy', books_path(book.id) %>
-    </span>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+    <tr>
+      <td>
+        <span class="book-title">
+          <%= books.title %>
+        </span>
+      </td>
+      <td>
+        <span class="book-body">
+          <td><%= @books.body %></td>
+        </span>
+      </td>
+      <td>
+        <span>
+          <%= link_to 'Show', show_books_path(book.id) %>
+        </span>
+      </td>
+      <td>
+        <span>
+          <%= link_to 'Edit', edit_books_path(book.id) %>
+        </span>
+      </td>
+      <td>
+        <span>
+          <%= link_to 'Destroy', destroy_books_path(book.id) %>
+        </span>
+      </td>
+    </tr>
   </div>
-</div>
+</table>
   
 <% end %>
 

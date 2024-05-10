@@ -20,8 +20,8 @@ Body can't be blank"
 
   def index
     @books = Book.all
-    @books.title
-    @books.body
+    books(title)
+    books(body)
     @book = Book.new
     
   end
