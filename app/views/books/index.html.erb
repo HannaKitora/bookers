@@ -1,31 +1,33 @@
 <h1>Books</h1>
 
+<div class="book-wrap">
 <% @books.each do |book| %>
-
-  <p>Title</p>
-  <span>
-    <%= link_to books_path(book.id) %>
-  </span>
-  <p>Body</p>
-  <span>
-    <%= link_to books_path(book.id) %>
-  </span>
-  <span>
-    <%= link_to 'Show', books_path(book.id) %>
-  </span>
-  <span>
-    <%= link_to 'Edit', books_path(book.id) %>
-  </span>
-  <span>
-    <%= link_to 'Destroy', books_path(book.id) %>
-  </span>
-
+  <div class="book-box">
+    <p>Title</p>
+    <span class="book-title">
+      <%= @books.title %>
+    </span>
+    <p>Body</p>
+    <span class="book-body">
+      <%= @books.body %>
+    </span>
+    <span>
+      <%= link_to 'Show', books_path(book.id) %>
+    </span>
+    <span>
+      <%= link_to 'Edit', books_path(book.id) %>
+    </span>
+    <span>
+      <%= link_to 'Destroy', books_path(book.id) %>
+    </span>
+  </div>
+</div>
   
 <% end %>
 
 <h2>New Book</h2>
 
-<%= form_with model: @book, url:  'show_book', method: :post do |f| %>
+<%= form_with model: @book, url: 'show_book', method: :post do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
   <h4>Body</h4>
