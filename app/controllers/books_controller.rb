@@ -20,8 +20,6 @@ Body can't be blank"
 
   def index
     @books = Book.all
-    books(title)
-    books(body)
     @book = Book.new
     
   end
@@ -35,6 +33,7 @@ Body can't be blank"
   end
   
   def update
+    @book = Book.new #追加
     book = Book.find(params[:id])
     book.update(book_params)
     redirect_to book_path(book.id)

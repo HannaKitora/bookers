@@ -5,22 +5,25 @@
   <div class="book-box">
     <tr>
       <th>Title</th>
+      <% byebug %>
+        <%= @book.title %>
       <th>Body</th>
+        <%= @book.body %>
     </tr>
     <tr>
       <td>
         <span class="book-title">
-          <%= books.title %>
+
         </span>
       </td>
       <td>
         <span class="book-body">
-          <td><%= @books.body %></td>
+
         </span>
       </td>
       <td>
         <span>
-          <%= link_to 'Show', show_books_path(book.id) %>
+          <%= link_to Show, show_books_path(book.id) %>
         </span>
       </td>
       <td>
