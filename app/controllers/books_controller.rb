@@ -11,9 +11,9 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
-      flash.now[:alart] = "2 errors prohibited this book from being saved:Title can't be blank
-Body can't be blank"
-      render :new
+      flash.now[:alart] = "2 errors prohibited this book from being saved:Title can't be blank Body can't be blank"
+      @books = Book.all
+      render :index
     end
   end
   
@@ -39,7 +39,10 @@ Body can't be blank"
     redirect_to book_path(book.id)
   end
   
-  def delete
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to '/books'
   end
   
   def start
