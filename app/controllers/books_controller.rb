@@ -26,6 +26,13 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    
+    # if @book.save
+    #   flash[:notice] = "Book was successfully updated."
+    #   redirect_to book_path(@book.id)
+    # else
+    #   redirect_to book_path(@book.id)
+    # end
   end
 
   def edit
@@ -33,10 +40,17 @@ class BooksController < ApplicationController
   end
   
   def update
-    @book = Book.new #追加
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id)
+    # @book = Book.new #追加
+    @book = Book.find(params[:id])
+    
+    if @book.update(book_params)
+    flash[:notice] = "Book was successfully updated."
+    redirect_to book_path(@book.id)
+    else
+      flash.now[:alart] = "error"
+      render :edit
+    end
+    
     
   end
   
@@ -45,12 +59,10 @@ class BooksController < ApplicationController
     book.destroy
     flash[:notice] = "Book was successfully destroyed."
     redirect_to '/books'
-    
-
   end
   
   def start
-    redirect_to books_path
+    redirect_to top_homes_path
   end
   
   private
